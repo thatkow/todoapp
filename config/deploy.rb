@@ -47,6 +47,7 @@ namespace :puma do
 end
 
 namespace :deploy do
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -58,11 +59,20 @@ namespace :deploy do
     end
   end
 
+ 
+
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
       invoke 'deploy'
+    end
+  end
+
+  desc "Install debian pacakges"
+  task :install do
+    on roles(:app) do
+      exec "sudo apt-get update; sudo apt-get install -y nodejs libsqlite3-dev libgmp-dev libgmp3-dev"
     end
   end
 
@@ -77,6 +87,7 @@ namespace :deploy do
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
+
 end
 
 # ps aux | grep puma    # Get puma pid
