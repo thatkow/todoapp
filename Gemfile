@@ -52,3 +52,5 @@ group :development do
     gem 'capistrano-bundler', require: false
     gem 'capistrano3-puma',   require: false
 end
+
+gem 'puma'
