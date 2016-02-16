@@ -1,7 +1,7 @@
 # Change these
-server '127.0.0.1', port: 3022, roles: [:web, :app, :db], primary: true
+server '10.92.17.251', roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:thatkow/todoapp.git'
+set :repo_url,        'https://github.com/thatkow/todoapp.git'
 set :application,     'todoapp'
 set :user,            'username'
 set :puma_threads,    [4, 16]
@@ -25,7 +25,7 @@ set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
 ## Defaults:
 # set :scm,           :git
-# set :branch,        :master
+set :branch,        :dart
 # set :format,        :pretty
 # set :log_level,     :debug
 # set :keep_releases, 5
